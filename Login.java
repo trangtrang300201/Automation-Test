@@ -43,6 +43,7 @@ public class Login {
 		Login("ngothilinh", "12345678");
 		Thread.sleep(5000);
 		Assert.assertEquals(driver.getCurrentUrl(), URL_dashBoard);
+		System.out.println("Test: Đăng nhập thành công");
 	}
 	//Case 1
 	@Test
@@ -52,6 +53,7 @@ public class Login {
 		String noti = driver.findElement(By.xpath("//small[@class='text-danger text-sm']")).getText();
 		Assert.assertEquals(noti, "Tên đăng nhập là bắt buộc nhập");
 		Assert.assertEquals(driver.getCurrentUrl(), url_login);
+		System.out.println("Test 1: Lỗi đăng nhập khi bỏ trống trường username bắt buộc");
 	}
 	//Case 2
 	@Test
@@ -61,6 +63,7 @@ public class Login {
 		String noti = driver.findElement(By.xpath("//small[@class='text-danger text-sm']")).getText();
 		Assert.assertEquals(noti, "Mật khẩu là bắt buộc nhập");
 		Assert.assertEquals(driver.getCurrentUrl(), url_login);
+		System.out.println("Test 2: Lỗi đăng nhập khi bỏ trống trường password bắt buộc");
 	}
 	//Case 3
 	@Test
@@ -72,6 +75,7 @@ public class Login {
 		Assert.assertEquals(noti_username, "Tên đăng nhập là bắt buộc nhập");
 		Assert.assertEquals(noti_password, "Mật khẩu là bắt buộc nhập");
 		Assert.assertEquals(driver.getCurrentUrl(), url_login);
+		System.out.println("Test 3: Lỗi đăng nhập khi bỏ trống trường username và password bắt buộc");
 	}
 
 	//Case 4
@@ -85,6 +89,7 @@ public class Login {
 		if (username_field.length()==50) check = true;
 		Assert.assertTrue(check);
 		Assert.assertEquals(driver.getCurrentUrl(), url_login);
+		System.out.println("Test 4: Lỗi đăng nhập khi nhập username vượt quá maxlength");
 		
 	}
 
@@ -100,6 +105,7 @@ public class Login {
 		if (password_field.length()==50) check = true;
 		Assert.assertTrue(check);		
 		Assert.assertEquals(driver.getCurrentUrl(), url_login);
+		System.out.println("Test 5: Lỗi đăng nhập khi nhập password vượt quá maxlength");
 	}
 
 	//Case 6
@@ -111,6 +117,7 @@ public class Login {
 		String noti = driver.findElement(By.xpath("//small[@class='text-danger text-sm']")).getText();
 		Assert.assertEquals(noti, "Tên đăng nhập không được chứa khoảng trắng");
 		Assert.assertEquals(driver.getCurrentUrl(), url_login);
+		System.out.println("Test 6: Lỗi đăng nhập khi nhập username sai định dạng");
 	}
 	
 	//Case 7
@@ -121,6 +128,7 @@ public class Login {
 		String noti = driver.findElement(By.xpath("//div[@class='ant-notification ant-notification-topRight']")).getText();
 		Assert.assertEquals(noti, "Account Invalid");
 		Assert.assertEquals(driver.getCurrentUrl(), url_login);
+		System.out.println("Test 4: Lỗi đăng nhập khi nhập username không đúng/không tồn tại");
 	}
 	//Case 8
 	@Test
@@ -130,9 +138,10 @@ public class Login {
 		String noti = driver.findElement(By.xpath("//div[@class='ant-notification ant-notification-topRight']")).getText();
 		Assert.assertEquals(noti, "Account Invalid");
 		Assert.assertEquals(driver.getCurrentUrl(), url_login);
+		System.out.println("Test 4: Lỗi đăng nhập khi nhập password không đúng/không tồn tại");
 	}
 	
-	//Case 9
+	//Case 9: chạy cùng bị lỗi các testcase còn lại, chưa xử lý được nên tạm comment
 //	@Test
 //	public void LoginWith5Incorrect() throws InterruptedException {
 //		WebElement locator;
